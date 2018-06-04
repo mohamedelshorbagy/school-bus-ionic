@@ -14,12 +14,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  lat = 30.044281;
+  lng = 31.340002;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+  }
+
+  getCurrentLocation() {
+    const $this = this;
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(function (position) {
+        $this.lat = position.coords.latitude;
+        $this.lng = position.coords.longitude;
+      });
+    }
   }
 
 }

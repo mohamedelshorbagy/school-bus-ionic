@@ -17,5 +17,14 @@
 
 
 <ion-content padding>
+  <div id="map">
+    <agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="12"
+    >
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+  </div>
 
 </ion-content>
