@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 /**
@@ -18,9 +18,10 @@ export class LoginPage {
   errorMessage: string;
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
-    public auth: AuthProvider
+    public auth: AuthProvider,
+    public loadingCtrl: LoadingController
   ) {
   }
 
@@ -31,9 +32,17 @@ export class LoginPage {
 
   login(data) {
     let isAuth = this.auth.login(data.value);
-    if(isAuth) {
-      this.auth.storeToken('123456');
-      this.navCtrl.setRoot(HomePage);
+    let loading = this.loadingCtrl.create({
+      content: 'Loading...'
+    });
+
+    loading.present();
+    if (isAuth) {
+      setTimeout(() => {
+        this.auth.storeToken('123456');
+        this.navCtrl.setRoot(HomePage);
+        loading.dismiss();
+      }, 5000)
     } else {
       this.errorMessage = 'Username or Password is wrong!';
     }

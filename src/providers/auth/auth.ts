@@ -31,4 +31,8 @@ export class AuthProvider {
     return localStorage.getItem('token');
   }
 
+  removeToken() {
+    localStorage.removeItem('token');
+  }
+
 }

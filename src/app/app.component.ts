@@ -7,6 +7,7 @@ import { StarterPage } from '../pages/starter/starter';
 import { DetailedTablePage } from '../pages/detailed-table/detailed-table';
 import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class MyApp {
   signupPage: any = SignupPage;
   homePage: any = HomePage;
   @ViewChild('nav') nav: NavController;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, private auth: AuthProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -30,6 +31,12 @@ export class MyApp {
 
   onLoad(page: any) {
     this.nav.setRoot(page);
+    this.menuCtrl.close();
+  }
+  
+  Logout() {
+    this.auth.removeToken();
+    this.nav.setRoot(this.rootPage);
     this.menuCtrl.close();
   }
 }
