@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams,ToastController} from 'ionic-angular';
+import {MatronsServiceProvider} from '../../providers/matrons-service/matrons-service';
 
 /**
  * Generated class for the AttendancePage page.
@@ -58,19 +59,62 @@ export class AttendancePage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  children: any;
+  attendanceTable: any;
+  errorMessage: string;
+  successMessage: string;
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public matronsService: MatronsServiceProvider,
+              public toastCtrl:ToastController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AttendancePage');
+    this.matronsService.getAttendanceTable().subscribe(res => {
+      if (res['success'] === true) {
+
+        this.children = res['children'];
+      }
+    })
   }
 
-  studentChecked(student) {
-    student.checked = !student.checked;
+  studentChecked(child) {
+    child.checked = !child.checked;
   }
 
   getStudents() {
-    console.log(this.students);
+    console.log(this.children);
+  }
+
+  submitAttendance() {
+
+    this.attendanceTable = this.children.map((child) => {
+      if (child.checked === undefined) {
+        child.checked = false;
+      }
+      return [child.id, child.checked, child.line, 0, new Date().toISOString()]
+    });
+
+    this.matronsService.submitAttendanceList(this.attendanceTable).subscribe(res => {
+
+      if (res['success'] === true) {
+        let toast = this.toastCtrl.create({
+          message: 'Attendance List Submitted Successfully!',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      } else {
+        let toast = this.toastCtrl.create({
+          message: 'Something Went Wrong!',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      }
+    })
   }
 
 }

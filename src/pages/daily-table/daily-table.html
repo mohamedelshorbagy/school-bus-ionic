@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Daily Table</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1 class="text-center" *ngIf="errorMessage">{{ errorMessage }}</h1>
+  <ion-card *ngIf="daily">
+    <ion-card-content>
+      <b>Child Name : </b> {{ daily.child }} <br>
+      <b>Matron Name : </b> {{ daily.matrons }} <br>
+      <b>Driver Name : </b> {{ daily.driver }} <br>
+      <b>Arrived Time : </b> {{ arrivedTime(daily.arrived) }} <br>
+      <b>Dropped Time : </b> {{ droppedTime(daily.dropped) }} <br>
+      <button ion-button round color="secondary" *ngIf="daily.checked === 1">Attended</button>
+      <button ion-button round color="danger" *ngIf="daily.checked === 0">Not Attended</button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -18,5 +18,30 @@
 
 
 <ion-content padding>
-<h1>Daily Table</h1>
+<h1 class="text-center">Arrive/Drop Table</h1>
+  <ion-item>
+    <ion-label floating>Search</ion-label>
+    <ion-input
+      [(ngModel)]="searchBy"
+      type="text"
+    ></ion-input>
+  </ion-item>
+  <ion-list *ngIf="children">
+    <ion-item-sliding *ngFor="let child of children | search:'name':searchBy">
+      <ion-item>
+        {{ child.name }}
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="secondary" (click)="arrive(child.id)">
+          <ion-icon name="add"></ion-icon>
+          Arrive
+        </button>
+        <button ion-button color="danger" (click)="dropped(child.id)">
+          <ion-icon name="trash"></ion-icon>
+          Drop
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>

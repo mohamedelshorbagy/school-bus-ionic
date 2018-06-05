@@ -10,10 +10,18 @@ import {HomePage} from '../pages/home/home';
 import {DetailedTablePage} from '../pages/detailed-table/detailed-table';
 import {AuthProvider} from '../providers/auth/auth';
 import {StarterPage} from '../pages/starter/starter';
-import { AttendancePage } from '../pages/attendance/attendance';
+import {AttendancePage} from '../pages/attendance/attendance';
 import {AgmCoreModule} from '@agm/core';
+import {ProfileChildrenPage} from "../pages/profile-children/profile-children";
+import {SearchPipe} from '../pipes/search.pipe';
+import {MatronsServiceProvider} from '../providers/matrons-service/matrons-service';
+import {ParentServiceProvider} from '../providers/parent-service/parent-service';
+import {DailyTablePage} from "../pages/daily-table/daily-table";
 
-import { SearchPipe } from '../pipes/search.pipe';
+import {NotificationPage} from '../pages/notification/notification';
+import {ContactUsPage} from '../pages/contact-us/contact-us';
+import {FollowersPage} from '../pages/followers/followers';
+import {MyProfilePage} from '../pages/my-profile/my-profile';
 
 @NgModule({
   declarations: [
@@ -22,6 +30,12 @@ import { SearchPipe } from '../pipes/search.pipe';
     DetailedTablePage,
     StarterPage,
     AttendancePage,
+    ProfileChildrenPage,
+    DailyTablePage,
+    NotificationPage,
+    ContactUsPage,
+    FollowersPage,
+    MyProfilePage,
     SearchPipe
   ],
   imports: [
@@ -38,13 +52,21 @@ import { SearchPipe } from '../pipes/search.pipe';
     HomePage,
     DetailedTablePage,
     StarterPage,
-    AttendancePage
+    AttendancePage,
+    ProfileChildrenPage,
+    DailyTablePage,
+    NotificationPage,
+    ContactUsPage,
+    MyProfilePage,
+    FollowersPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    MatronsServiceProvider,
+    ParentServiceProvider
   ]
 })
 export class AppModule {

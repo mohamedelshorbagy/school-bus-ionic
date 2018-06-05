@@ -11,13 +11,33 @@
         <ion-icon name="home" item-left></ion-icon>
         Home
       </button>
-      <button ion-item (click)="onLoad(detailsPage)">
+      <button ion-item (click)="onLoad(detailsPage)" *ngIf="getUserType() === 'matrons'">
         <ion-icon name="settings" item-left></ion-icon>
-        Details Page
+        Daily Table
       </button>
-      <button ion-item (click)="onLoad(attendancePage)">
+      <button ion-item (click)="onLoad(attendancePage)" *ngIf="getUserType() === 'matrons'">
         <ion-icon name="settings" item-left></ion-icon>
         Attendance Table
+      </button>
+      <button ion-item (click)="onLoad(profileChildrenPage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="settings" item-left></ion-icon>
+        Children Profile
+      </button>
+      <button ion-item (click)="onLoad(notificationPage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="settings" item-left></ion-icon>
+        Notification
+      </button>
+      <button ion-item (click)="onLoad(followerPage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="settings" item-left></ion-icon>
+        Followers
+      </button>
+      <button ion-item (click)="onLoad(myProfilePage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="settings" item-left></ion-icon>
+        Profile
+      </button>
+      <button ion-item (click)="onLoad(contactUsPage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="settings" item-left></ion-icon>
+        Contact Us
       </button>
       <button ion-item (click)="Logout()">
         <ion-icon name="home" item-left></ion-icon>

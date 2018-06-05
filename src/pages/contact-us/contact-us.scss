@@ -1,3 +1,23 @@
 page-contact-us {
+  .text-center {
+    text-align: center;
+    margin-top: 30vh;
+  }
 
+  .social {
+    display: flex;
+    justify-content: space-around;
+    ion-icon[name="logo-facebook"] {
+      color: rgb(59, 89, 152);
+      font-size: 35px;
+    }
+    ion-icon[name="logo-twitter"] {
+      color: rgb(52, 152, 212);
+      font-size: 35px;
+    }
+    ion-icon[name="logo-googleplus"] {
+      color: rgb(231, 70, 67);
+      font-size: 35px;
+    }
+  }
 }

@@ -17,23 +17,25 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <h3 class="text-center">Attendance Table</h3>
-    <!--<button ion-button color="primary" (click)="getStudents()">Get Students</button>-->
+  <h3 class="text-center">Attendance Table</h3>
+
+  <ion-list *ngIf="children">
     <ion-item>
       <ion-label floating>Search</ion-label>
       <ion-input
       [(ngModel)]="searchBy"
       type="text"
       ></ion-input>
+
     </ion-item>
     <hr>
-    <ion-item *ngFor="let student of students | search:searchBy; let i = index">
+    <ion-item *ngFor="let child of children | search:'name':searchBy; let i = index">
       <ion-label>
-        <img [src]="student.img">
-        {{ student.name }}
+        <img src="https://placehold.it/50/92c952">
+        {{ child.name }}
       </ion-label>
-      <ion-checkbox color="primary" [checked]="student.checked" (click)="studentChecked(student)"></ion-checkbox>
+      <ion-checkbox color="primary" [checked]="child.checked" (click)="studentChecked(child)"></ion-checkbox>
     </ion-item>
+    <button ion-button color="primary" round (click)="submitAttendance()" class="btn-center">Save</button>
   </ion-list>
 </ion-content>

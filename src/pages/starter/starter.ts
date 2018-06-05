@@ -30,21 +30,28 @@ export class StarterPage {
   }
 
   login(data) {
-    let isAuth = this.auth.login(data.value);
     let loading = this.loadingCtrl.create({
       content: 'Loading...'
     });
-
     loading.present();
-    if (isAuth) {
-      setTimeout(() => {
-        this.auth.storeToken('123456');
-        this.navCtrl.setRoot(HomePage);
-        loading.dismiss();
-      }, 3000);
-    } else {
-      this.errorMessage = 'Username or Password is wrong!';
-    }
+    this.auth.login(data.value.username).subscribe(res => {
+
+      if(res['success'] === true) {
+          setTimeout(() => {
+            if(res['isParent'] === true) {
+              this.auth.storeToken(res['parent']['id'],'parent');
+            } else if(res['isMatrons'] === true) {
+              this.auth.storeToken(res['matrons']['id'],'matrons',res['matrons']['line']);
+            } else if(res['isDriver'] === true) {
+              this.auth.storeToken(res['driver']['id'],'driver');
+            }
+            this.navCtrl.setRoot(HomePage);
+            loading.dismiss();
+          }, 2000);
+      } else {
+          this.errorMessage = 'Username or Password is wrong!';
+      }
+    });
   }
 
 }

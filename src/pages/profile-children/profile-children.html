@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profile-children</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Children Profile</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
+
+
+
+
 <ion-content padding>
+  <div class="container" *ngIf="children">
+    <ion-card *ngFor="let child of children;let i = index">
+      <img src="https://placehold.it/150/92c952" width="150" height="150"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ child.name }}
+        </ion-card-title>
+        <b>Class:</b> {{ child.grade }} <br>
+        <b>garde:</b> {{ child.classId }} <br>
+        <button ion-button color="primary" class="btn-center" (click)="viewDailyTable(child.id)">View Daily Table</button>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
 
 </ion-content>
