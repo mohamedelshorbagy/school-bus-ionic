@@ -17,6 +17,10 @@
 
 
 <ion-content padding>
+  <div class="search-input">
+    <ion-icon name="search"></ion-icon>
+    <input type="text" class="form-control" [(ngModel)]="searchBy" placeholder="Search">
+  </div>
   <div id="map">
     <agm-map
     [latitude]="lat"

@@ -18,10 +18,12 @@ export class HomePage {
   lng = 31.340002;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    // this.getCurrentLocation();
   }
 
   getCurrentLocation() {

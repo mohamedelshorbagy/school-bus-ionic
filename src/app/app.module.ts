@@ -7,22 +7,22 @@ import {HttpClientModule} from '@angular/common/http';
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
 
-import {LoginPage} from '../pages/login/login';
 import {DetailedTablePage} from '../pages/detailed-table/detailed-table';
-import {SignupPage} from '../pages/signup/signup';
 import {AuthProvider} from '../providers/auth/auth';
 import {StarterPage} from '../pages/starter/starter';
-
+import { AttendancePage } from '../pages/attendance/attendance';
 import {AgmCoreModule} from '@agm/core';
+
+import { SearchPipe } from '../pipes/search.pipe';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
     DetailedTablePage,
-    SignupPage,
-    StarterPage
+    StarterPage,
+    AttendancePage,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
@@ -36,10 +36,9 @@ import {AgmCoreModule} from '@agm/core';
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
     DetailedTablePage,
-    SignupPage,
-    StarterPage
+    StarterPage,
+    AttendancePage
   ],
   providers: [
     StatusBar,

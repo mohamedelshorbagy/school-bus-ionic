@@ -5,4 +5,35 @@ page-home {
   .scroll-content {
     padding: 0 !important;
   }
+  ion-icon[name="search"] {
+    font-size: 2.5em;
+    font-weight: 400;
+    position: absolute;
+    top: 0.65em;
+    right: 5rem;
+    z-index: 9999999;
+  }
+
+  .search-input {
+    position: absolute;
+    z-index: 99999;
+    width: 100%;
+    .form-control {
+      font-weight: 300;
+      font-size: 28px;
+      color: #222222;
+      margin-top: 2rem;
+      width: 80%;
+      margin-left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem;
+      padding-left: 20px;
+      border: none;
+      outline: none;
+      -webkit-box-shadow: 0 2px 4px 0 rgba(0 , 0 , 0 , 0.48),0 0 0 1px rgba(0,0,0,0.08);
+      -moz-box-shadow: 0 2px 4px 0 rgba(0 , 0 , 0 , 0.48),0 0 0 1px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 4px 0 rgba(0 , 0 , 0 , 0.48),0 0 0 1px rgba(0,0,0,0.08);
+    }
+  }
+
 }
