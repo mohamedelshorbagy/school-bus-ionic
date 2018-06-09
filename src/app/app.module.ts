@@ -22,6 +22,7 @@ import {NotificationPage} from '../pages/notification/notification';
 import {ContactUsPage} from '../pages/contact-us/contact-us';
 import {FollowersPage} from '../pages/followers/followers';
 import {MyProfilePage} from '../pages/my-profile/my-profile';
+import {RatesPage} from "../pages/rates/rates";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {MyProfilePage} from '../pages/my-profile/my-profile';
     ContactUsPage,
     FollowersPage,
     MyProfilePage,
+    RatesPage,
     SearchPipe
   ],
   imports: [
@@ -58,7 +60,8 @@ import {MyProfilePage} from '../pages/my-profile/my-profile';
     NotificationPage,
     ContactUsPage,
     MyProfilePage,
-    FollowersPage
+    FollowersPage,
+    RatesPage
   ],
   providers: [
     StatusBar,
