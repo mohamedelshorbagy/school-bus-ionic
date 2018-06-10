@@ -12,6 +12,11 @@ import {ProfileChildrenPage} from "../pages/profile-children/profile-children";
 import {FollowersPage} from "../pages/followers/followers";
 import {ContactUsPage} from "../pages/contact-us/contact-us";
 import {MyProfilePage} from "../pages/my-profile/my-profile";
+import {RatesPage} from "../pages/rates/rates";
+import {DriverRatesPage} from "../pages/driver-rates/driver-rates";
+import {DriverProfilePage} from "../pages/driver-profile/driver-profile";
+import {SuperProfilePage} from "../pages/super-profile/super-profile";
+import {ProfilePage} from "../pages/profile/profile";
 
 
 @Component({
@@ -27,6 +32,11 @@ export class MyApp {
   notificationPage: any = Notification;
   contactUsPage: any = ContactUsPage;
   myProfilePage: any = MyProfilePage;
+  profilePage: any = ProfilePage;
+  ratesPage: any = RatesPage;
+  driverRatesPage: any = DriverRatesPage;
+  driverProfilePage: any = DriverProfilePage;
+  superProfilePage: any = SuperProfilePage;
   @ViewChild('nav') nav: NavController;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController, public auth: AuthProvider) {

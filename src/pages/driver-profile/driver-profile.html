@@ -1,5 +1,5 @@
 <!--
-  Generated template for the MyProfilePage page.
+  Generated template for the DriverProfilePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -17,7 +17,6 @@
 
 
 <ion-content padding>
-
   <div class="container" *ngIf="profile">
     <ion-card>
       <img src="https://placehold.it/150/92c952" width="150" height="150"/>
@@ -26,9 +25,12 @@
           {{ profile.name }}
         </ion-card-title>
         <b>Phone:</b> {{ profile.phone }} <br>
+        <b>Line :</b> {{ profile.line }} <br>
+        <b>Bus ID :</b> {{ profile.busId }} <br>
         <b>Code :</b> {{ profile.code }} <br>
       </ion-card-content>
     </ion-card>
   </div>
+
 
 </ion-content>

@@ -15,11 +15,15 @@
         <ion-icon name="archive" item-left></ion-icon>
         Daily Table
       </button>
-      <button ion-item (click)="onLoad(attendancePage)" *ngIf="getUserType() === 'matrons'">
+      <button ion-item (click)="onLoad(attendancePage)" *ngIf="getUserType() === 'matrons' || getUserType() === 'supervisor'">
         <ion-icon name="albums" item-left></ion-icon>
         Attendance Table
       </button>
-      <button ion-item (click)="onLoad(attendancePage)" *ngIf="getUserType() === 'matrons'">
+      <button ion-item (click)="onLoad(ratesPage)" *ngIf="getUserType() === 'matrons'">
+        <ion-icon name="star" item-left></ion-icon>
+        My Rates
+      </button>
+      <button ion-item (click)="onLoad(driverRatesPage)" *ngIf="getUserType() === 'driver'">
         <ion-icon name="star" item-left></ion-icon>
         My Rates
       </button>
@@ -36,6 +40,18 @@
         Followers
       </button>
       <button ion-item (click)="onLoad(myProfilePage)" *ngIf="getUserType() === 'parent'">
+        <ion-icon name="contact" item-left></ion-icon>
+        Profile
+      </button>
+      <button ion-item (click)="onLoad(profilePage)" *ngIf="getUserType() === 'matrons'">
+        <ion-icon name="contact" item-left></ion-icon>
+        Profile
+      </button>
+      <button ion-item (click)="onLoad(driverProfilePage)" *ngIf="getUserType() === 'driver'">
+        <ion-icon name="contact" item-left></ion-icon>
+        Profile
+      </button>
+      <button ion-item (click)="onLoad(superProfilePage)" *ngIf="getUserType() === 'supervisor'">
         <ion-icon name="contact" item-left></ion-icon>
         Profile
       </button>

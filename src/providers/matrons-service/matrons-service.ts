@@ -10,7 +10,7 @@ import {AuthProvider} from '../auth/auth';
 */
 @Injectable()
 export class MatronsServiceProvider {
-  baseURL = 'http://localhost:3000/api';
+  baseURL = 'http://46.101.1.65:3654/api';
 
   constructor(public http: HttpClient, private auth: AuthProvider) {
     console.log('Hello MatronsServiceProvider Provider');
@@ -18,7 +18,7 @@ export class MatronsServiceProvider {
 
 
   getAttendanceTable() {
-    return this.http.get(`${this.baseURL}/matrons/getChildren/${this.auth.getLineNumber()}`);
+    return this.http.get(`${this.baseURL}/matrons/getChildren/12`);
   }
 
   submitAttendanceList(attendanceList) {

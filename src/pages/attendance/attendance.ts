@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams,ToastController} from 'ionic-angular';
 import {MatronsServiceProvider} from '../../providers/matrons-service/matrons-service';
-
+import { AuthProvider } from '../../providers/auth/auth';
 /**
  * Generated class for the AttendancePage page.
  *
@@ -67,7 +67,8 @@ export class AttendancePage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public matronsService: MatronsServiceProvider,
-              public toastCtrl:ToastController) {
+              public toastCtrl:ToastController,
+              public authService: AuthProvider) {
   }
 
   ionViewDidLoad() {
@@ -115,6 +116,12 @@ export class AttendancePage {
         toast.present();
       }
     })
+  }
+
+
+
+  getUserType() {
+    return this.authService.getType();
   }
 
 }

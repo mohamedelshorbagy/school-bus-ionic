@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { AuthProvider } from '../../providers/auth/auth';
 /**
  * Generated class for the MyProfilePage page.
  *
@@ -14,11 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'my-profile.html',
 })
 export class MyProfilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  profile: any;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public authService: AuthProvider) {
   }
 
   ionViewDidLoad() {
+    this.authService.getParentProfile().subscribe(res => {
+      this.profile = res['parent'];
+      console.log('parent' , this.profile);
+    });
     console.log('ionViewDidLoad MyProfilePage');
   }
 

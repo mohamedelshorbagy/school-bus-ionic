@@ -9,7 +9,7 @@ import {Injectable} from '@angular/core';
 */
 @Injectable()
 export class AuthProvider {
-  baseURL = 'http://localhost:3000/api';
+  baseURL = 'http://46.101.1.65:3654/api';
 
   constructor(public http: HttpClient) {
     console.log('Hello AuthProvider Provider');
@@ -52,29 +52,32 @@ export class AuthProvider {
 
 
   loginSupervisor(code) {
-    return this.http.get(`${this.baseURL}/matrons/${code}`);
+    return this.http.get(`${this.baseURL}/supervisors/${code}/getSuper`);
   }
 
 
-  storeToken(token, type, line = null) {
+  storeToken(token, code, type, line = null) {
     if (type === 'parent') {
 
 
       localStorage.setItem('token', token);
       localStorage.setItem('type', type);
-
+      localStorage.setItem('code', code)
     } else if (type === 'matrons') {
       // Case Of Matron
       localStorage.setItem('token', token);
       localStorage.setItem('type', type);
       localStorage.setItem('line', line);
+      localStorage.setItem('code', code)
     } else if (type === 'driver') {
       localStorage.setItem('token', token);
       localStorage.setItem('type', type);
+      localStorage.setItem('code', code)
 
-    } else if (type === 'super') {
+    } else if (type === 'supervisor') {
       localStorage.setItem('token', token);
       localStorage.setItem('type', type);
+      localStorage.setItem('code', code)
     }
   }
 
@@ -93,10 +96,32 @@ export class AuthProvider {
   removeToken() {
     localStorage.removeItem('token');
     localStorage.removeItem('type');
+    localStorage.removeItem('code');
     if (this.getType() === 'matrons') {
       localStorage.removeItem('line');
     }
 
   }
 
+  getParentProfile() {
+    return this.http.get(`${this.baseURL}/parents/${this.getCode()}`)
+  }
+
+  getSuperProfile() {
+    return this.http.get(`${this.baseURL}/supervisors/${this.getCode()}/getSuper`)
+  }
+
+  getMatronProfile() {
+    return this.http.get(`${this.baseURL}/matrons/${this.getCode()}`)
+
+  }
+
+  getDriverProfile() {
+    return this.http.get(`${this.baseURL}/drivers/${this.getCode()}`)
+  }
+
+
+  getCode() {
+    return localStorage.getItem('code');
+  }
 }

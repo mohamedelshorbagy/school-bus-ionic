@@ -9,12 +9,16 @@ import { AuthProvider } from '../auth/auth';
 */
 @Injectable()
 export class ParentServiceProvider {
-  baseURL = 'http://localhost:3000/api';
+  baseURL = 'http://46.101.1.65:3654/api';
 
 
   constructor(public http: HttpClient,public auth:AuthProvider) {
     console.log('Hello ParentServiceProvider Provider');
   }
+
+
+
+
 
   getChildren() {
 

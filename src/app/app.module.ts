@@ -23,6 +23,12 @@ import {ContactUsPage} from '../pages/contact-us/contact-us';
 import {FollowersPage} from '../pages/followers/followers';
 import {MyProfilePage} from '../pages/my-profile/my-profile';
 import {RatesPage} from "../pages/rates/rates";
+import {DriverProfilePage} from '../pages/driver-profile/driver-profile';
+import {DriverRatesPage} from '../pages/driver-rates/driver-rates';
+import {SuperProfilePage} from '../pages/super-profile/super-profile';
+import {ProfilePage} from '../pages/profile/profile';
+
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,11 @@ import {RatesPage} from "../pages/rates/rates";
     FollowersPage,
     MyProfilePage,
     RatesPage,
-    SearchPipe
+    SearchPipe,
+    DriverProfilePage,
+    DriverRatesPage,
+    SuperProfilePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +56,8 @@ import {RatesPage} from "../pages/rates/rates";
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDIE3IOiOrz07sCN_L4H6fzImRzSozlJoA'
     }),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,7 +72,11 @@ import {RatesPage} from "../pages/rates/rates";
     ContactUsPage,
     MyProfilePage,
     FollowersPage,
-    RatesPage
+    RatesPage,
+    DriverProfilePage,
+    DriverRatesPage,
+    SuperProfilePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

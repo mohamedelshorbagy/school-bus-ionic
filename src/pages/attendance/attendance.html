@@ -36,6 +36,7 @@
       </ion-label>
       <ion-checkbox color="primary" [checked]="child.checked" (click)="studentChecked(child)"></ion-checkbox>
     </ion-item>
-    <button ion-button color="primary" round (click)="submitAttendance()" class="btn-center">Save</button>
+    <button ion-button color="primary" round (click)="submitAttendance()" class="btn-center" *ngIf="getUserType() === 'matrons'">Save</button>
+    <button ion-button color="primary" round (click)="submitAttendance()" *ngIf="getUserType() === 'supervisor'" class="btn-center">Submit</button>
   </ion-list>
 </ion-content>

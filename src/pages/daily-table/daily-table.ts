@@ -18,6 +18,7 @@ export class DailyTablePage {
   childId: any;
   daily: any;
   errorMessage: any;
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public parentService: ParentServiceProvider) {
@@ -25,9 +26,8 @@ export class DailyTablePage {
   }
 
   ionViewDidLoad() {
-    console.log(this.childId);
     this.parentService.getDailyTable(this.childId).subscribe(res => {
-      if(res['success']) {
+      if (res['success']) {
         this.daily = res['daily'][0];
       } else {
         this.errorMessage = "There's no Daily Table For this Student Right Now, try it Later"
@@ -46,6 +46,10 @@ export class DailyTablePage {
     let droppedDate = new Date(date);
     let droppedDateAggregated = '' + droppedDate.getHours() + ':' + droppedDate.getMinutes() + ':' + droppedDate.getSeconds() + droppedDate.getMilliseconds();
     return droppedDateAggregated;
+  }
+
+  onModelChange(event) {
+    console.log(event);
   }
 
 }

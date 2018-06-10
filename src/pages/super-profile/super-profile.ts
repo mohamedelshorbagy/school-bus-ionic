@@ -3,7 +3,7 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AuthProvider} from '../../providers/auth/auth';
 
 /**
- * Generated class for the ProfilePage page.
+ * Generated class for the SuperProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,23 +11,22 @@ import {AuthProvider} from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-profile',
-  templateUrl: 'profile.html',
+  selector: 'page-super-profile',
+  templateUrl: 'super-profile.html',
 })
-export class ProfilePage {
+export class SuperProfilePage {
   profile: any;
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public authService: AuthProvider) {
   }
 
   ionViewDidLoad() {
-    this.authService.getMatronProfile().subscribe(res => {
-      this.profile = res['matrons'];
-      console.log('Matrons' , this.profile);
-    });
-    console.log('ionViewDidLoad ProfilePage');
+    this.authService.getSuperProfile().subscribe(res => {
+      this.profile = res['supervisor'];
+      console.log('Super' , this.profile);
+    })
+    console.log('ionViewDidLoad SuperProfilePage');
   }
 
 }

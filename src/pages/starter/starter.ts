@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, LoadingController, NavController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, ToastController} from 'ionic-angular';
 import {AuthProvider} from '../../providers/auth/auth';
 import {HomePage} from '../home/home';
 
@@ -20,7 +20,8 @@ export class StarterPage {
 
   constructor(public navCtrl: NavController,
               public auth: AuthProvider,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public toastCtrl:ToastController) {
   }
 
   ionViewDidLoad() {
@@ -37,19 +38,29 @@ export class StarterPage {
     this.auth.login(data.value.username).subscribe(res => {
 
       if(res['success'] === true) {
+        console.log(res);
           setTimeout(() => {
             if(res['isParent'] === true) {
-              this.auth.storeToken(res['parent']['id'],'parent');
+              console.log(res);
+              this.auth.storeToken(res['parent']['id'],res['parent']['code'],'parent');
             } else if(res['isMatrons'] === true) {
-              this.auth.storeToken(res['matrons']['id'],'matrons',res['matrons']['line']);
+              this.auth.storeToken(res['matrons']['id'],res['matrons']['code'],'matrons',res['matrons']['line']);
             } else if(res['isDriver'] === true) {
-              this.auth.storeToken(res['driver']['id'],'driver');
+              this.auth.storeToken(res['driver']['id'],res['driver']['code'],'driver');
+            } else if(res['isSuper'] === true) {
+              this.auth.storeToken(res['supervisor']['id'],res['supervisor']['code'],'supervisor');
             }
             this.navCtrl.setRoot(HomePage);
             loading.dismiss();
           }, 2000);
       } else {
-          this.errorMessage = 'Username or Password is wrong!';
+        loading.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Username or Password is wrong!',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
       }
     });
   }
