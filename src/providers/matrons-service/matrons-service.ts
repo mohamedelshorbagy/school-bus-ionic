@@ -1,6 +1,5 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {AuthProvider} from '../auth/auth';
 
 /*
   Generated class for the MatronsServiceProvider provider.
@@ -12,7 +11,7 @@ import {AuthProvider} from '../auth/auth';
 export class MatronsServiceProvider {
   baseURL = 'http://46.101.1.65:3654/api';
 
-  constructor(public http: HttpClient, private auth: AuthProvider) {
+  constructor(public http: HttpClient) {
     console.log('Hello MatronsServiceProvider Provider');
   }
 
